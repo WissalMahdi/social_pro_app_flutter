@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 //import 'package:flutter/scheduler.dart';
 import 'package:lottie/lottie.dart';
 
-import 'screen/loginsignupscreen.dart';
+import 'screen/login_signup_screen.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
 
   //route de page suivante yaani to93od 6 secondes w baad tt7al lpage elli esmha LoginSignupScreen

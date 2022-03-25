@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_pro_app_flutter/config/palette.dart';
+import 'package:social_pro_app_flutter/screen/resetpassword.dart';
 
 import '../acceuil.dart';
 import '../services/registration.dart';
@@ -272,7 +273,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                   ],
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ResetScreen())),
                     child: Text(
                       "Forgot Password?",
                       style: TextStyle(fontSize: 12, color: Palette.textColor1),
@@ -667,7 +669,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 // --- Insertion de données dans le cloud FireStore --- //
   Future<Void?> _insertData(String fName, String eml, String pwd) async {
     Map<String, dynamic> data = {
-      "FirstName": fnameController.text,
+      "FullName": fnameController.text,
       "Email": emailController.text,
       "Password": pwdController.text
     };
