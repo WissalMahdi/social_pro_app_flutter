@@ -60,7 +60,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       children: [
                         RichText(
                             text: TextSpan(
-                                text: "WELCOME__",
+                                text: "WELCOME",
                                 style: TextStyle(
                                   fontStyle: FontStyle.italic,
                                   fontSize: 25,
@@ -70,7 +70,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 ),
                                 children: [
                               TextSpan(
-                                  text: isSignupScreen ? "__User," : "_Back,",
+                                  text: isSignupScreen ? " ," : " Back,",
                                   style: TextStyle(
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
@@ -82,8 +82,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                         ),
                         Text(
                           isSignupScreen
-                              ? "Signup To Continue"
-                              : "Signin To Continue",
+                              ? "SignUp To Continue"
+                              : "SignIn To Continue",
                           style: TextStyle(
                             letterSpacing: 5,
                             color: Colors.white,
@@ -598,9 +598,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             if (isSignupScreen) {
-                              // _signUp();
                               createUser();
-
                               _insertData(fnameController.text,
                                   emailController.text, pwdController.text);
                             } else {
@@ -613,11 +611,6 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => Acceuil()));
                               }
-
-                              // singIn(fnameController.text, pwdController.text);
-
-                              /*Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Acceuil()));*/
                             }
                           }
                         }))
@@ -667,14 +660,11 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
     } on FirebaseAuthException catch (e) {
       print(e);
       Fluttertoast.showToast(msg: e.code);
-      /*if (e.code == "user_not_found") {
-        Fluttertoast.showToast(msg: e.code);
-        // print("No User found for that mail");
-      }*/
     }
     return user;
   }
 
+// --- Insertion de données dans le cloud FireStore --- //
   Future<Void?> _insertData(String fName, String eml, String pwd) async {
     Map<String, dynamic> data = {
       "FirstName": fnameController.text,
@@ -682,10 +672,24 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
       "Password": pwdController.text
     };
     FirebaseFirestore.instance.collection("Authentification").add(data);
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('Sign up succeeded'),
+              content: Text('Your account was created, you can now log in'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('OK'))
+              ],
+            ));
+    /*ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(
-            "Your registration has been successfully completed, PLEASE LOGIN NOW ")));
+            "Your registration has been successfully completed, PLEASE LOGIN NOW ")));*/
     _clearAll();
+
     return null;
   }
 
@@ -695,62 +699,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
     pwdController.text = "";
   }
 
-  /* Future _signUp() async {
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: pwdController.text.trim());
-
-      await FirebaseFirestore.instance.collection('users').add({
-        'email': emailController.text.trim(),
-        'password': pwdController.text.trim(),
-        'FullName': fnameController.text.trim()
-      });
-      await showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                title: Text('Sign up succeeded'),
-                content: Text('You account was created, you can now log in'),
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text('ok'))
-                ],
-              ));
-      Navigator.of(context).pop();
-    } on FirebaseAuthException catch (e) {
-      _handleSignUpError(e);
-    }
-  }
-
-  void _handleSignUpError(FirebaseAuthException e) {
-    String messageToDisplay;
-    switch (e.code) {
-      case 'email-already-in-use':
-        messageToDisplay = 'This email is already use';
-        break;
-      case 'invalid-email':
-        messageToDisplay = 'the email you ented is invalid';
-        break;
-    }
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: Text('Sign up failed'),
-              //content: Text(messageToDisplay),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('ok'))
-              ],
-            ));
-  }*/
-
-  // ------- 2éme méthode de registartion de données --------
+  // -------création de user --------
   void createUser() async {
     dynamic result = await auth.createNewUser(
         emailController.text.trim(), pwdController.text.trim());
