@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "762971440579",
+    "project_id": "prosocialmediaapp",
+    "storage_bucket": "prosocialmediaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762971440579:android:cb5a8e965cfb36b20ce976",
+        "android_client_info": {
+          "package_name": "com.example.social_pro_app_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762971440579-me4l9b2hs0q6tvv98b8ra0bcpb5cqp1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNW5z4C8z8mXc3BR9Plpf-IdamSPg1cs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "762971440579-me4l9b2hs0q6tvv98b8ra0bcpb5cqp1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
