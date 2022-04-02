@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'splash_screen.dart';
+import 'SplashScreen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {

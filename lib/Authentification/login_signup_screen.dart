@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_pro_app_flutter/Authentification/resetpassword.dart';
+import 'package:social_pro_app_flutter/Home/homePage.dart';
 import 'package:social_pro_app_flutter/config/palette.dart';
-import 'package:social_pro_app_flutter/contents/homePage.dart';
-import 'package:social_pro_app_flutter/screen/resetpassword.dart';
 
 import '../services/registration.dart';
 
