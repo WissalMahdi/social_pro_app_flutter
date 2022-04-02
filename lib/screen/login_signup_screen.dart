@@ -8,9 +8,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_pro_app_flutter/config/palette.dart';
+import 'package:social_pro_app_flutter/contents/homePage.dart';
 import 'package:social_pro_app_flutter/screen/resetpassword.dart';
 
-import '../acceuil.dart';
 import '../services/registration.dart';
 
 class LoginSignupScreen extends StatefulWidget {
@@ -273,7 +273,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                   ],
                 ),
                 TextButton(
-                    onPressed: () => Navigator.of(context).push(
+                    onPressed: () => Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => ResetScreen())),
                     child: Text(
                       "Forgot Password?",
@@ -610,8 +610,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   context: context);
                               print(user);
                               if (user != null) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Acceuil()));
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage()));
                               }
                             }
                           }
@@ -678,7 +679,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
         context: context,
         builder: (context) => AlertDialog(
               title: Text('Sign up succeeded'),
-              content: Text('Your account was created, you can now log in'),
+              content: Text('Your account was created, YOU CAN NOW LOGIN'),
               actions: [
                 TextButton(
                     onPressed: () {

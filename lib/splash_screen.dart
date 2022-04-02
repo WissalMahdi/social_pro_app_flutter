@@ -53,13 +53,6 @@ class _SplashScreenState extends State<SplashScreen> {
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   )),
-              /* TyperAnimatedText('Together...',
-                  speed: Duration(milliseconds: 70),
-                  textStyle: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),*/
             ]),
             SizedBox(
               height: 500,
