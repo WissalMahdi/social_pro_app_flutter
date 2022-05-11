@@ -104,7 +104,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             child: AnimatedContainer(
               duration: Duration(milliseconds: 500),
               curve: Curves.easeInCubic,
-              height: isSignupScreen ? 450 : 300,
+              height: isSignupScreen ? 420 : 280,
               padding: EdgeInsets.all(20),
               //width: _isExpanded ? -40 : 315,
               width: MediaQuery.of(context).size.width - 40,
@@ -188,7 +188,48 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             ),
           ),
           // Trick to add a submit buttom
-          buildBottomHalfContainer(false)
+          buildBottomHalfContainer(false),
+          Positioned(
+            top: isSignupScreen
+                ? MediaQuery.of(context).size.height - 75
+                : MediaQuery.of(context).size.height - 170,
+            left: 0,
+            right: 0,
+            child: Column(
+              //  mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Or Signup with"),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 130),
+                      child: TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                              side: BorderSide(width: 1, color: Colors.grey),
+                              minimumSize: Size(100, 40),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              primary: Colors.white,
+                              backgroundColor:
+                                  Color.fromARGB(255, 50, 62, 199)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                MaterialCommunityIcons.google_plus,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text("GOOGLE")
+                            ],
+                          )),
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -552,7 +593,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
     return AnimatedPositioned(
         duration: Duration(milliseconds: 500),
         curve: Curves.easeInCubic,
-        top: isSignupScreen ? 600 : 483,
+        top: isSignupScreen ? 570 : 460,
         right: 0,
         left: 0,
         child: Center(
